@@ -1,0 +1,122 @@
+/* RESET BÁSICO */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  font-family: 'Inter', sans-serif;
+  background: radial-gradient(circle at center, #2a2a35 0%, #101014 100%);
+  color: #ffffff;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* PATRÓN SUTIL DE DECORACIÓN + LUCES DIFUMINADAS */
+.bg-pattern {
+  position: fixed; 
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 30px 30px;
+  z-index: 1; 
+  overflow: hidden;
+  pointer-events: none; 
+}
+
+.bg-pattern::before {
+  content: '';
+  position: absolute;
+  top: -10%; left: -10%;
+  width: 50vw; height: 50vw;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.25) 0%, transparent 70%);
+  filter: blur(80px); 
+  border-radius: 50%;
+  z-index: -1; 
+  animation: floatLight1 25s ease-in-out infinite alternate;
+}
+
+.bg-pattern::after {
+  content: '';
+  position: absolute;
+  bottom: -10%; right: -10%;
+  width: 60vw; height: 60vw;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.20) 0%, transparent 70%);
+  filter: blur(90px);
+  border-radius: 50%;
+  z-index: -1; 
+  animation: floatLight2 20s ease-in-out infinite alternate;
+}
+
+@keyframes floatLight1 {
+  0% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(40vw, 20vh) scale(1.2); }
+  66% { transform: translate(15vw, 45vh) scale(0.8); }
+  100% { transform: translate(-10vw, 15vh) scale(1.1); }
+}
+
+@keyframes floatLight2 {
+  0% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-35vw, -30vh) scale(1.3); }
+  66% { transform: translate(-50vw, -10vh) scale(0.9); }
+  100% { transform: translate(10vw, -25vh) scale(1.1); }
+}
+
+/* CONTENEDOR DE TARJETAS (HOME) */
+.container {
+  display: flex;
+  gap: 3rem;
+  z-index: 10;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  width: 260px;
+  height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.card i { font-size: 4.5rem; color: #9ca3af; margin-bottom: 2rem; transition: 0.4s; }
+.card span { font-size: 1.2rem; font-weight: 400; color: #d1d5db; transition: 0.4s; }
+
+.card:hover {
+  transform: scale(1.05) translateY(-10px);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 15px 35px rgba(100, 150, 255, 0.2), 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.card:hover i { color: #ffffff; text-shadow: 0 0 15px rgba(255, 255, 255, 0.5); }
+.card:hover span { color: #ffffff; }
+
+/* ANIMACIÓN DE TRANSICIÓN */
+.transition-overlay {
+  position: fixed;
+  top: 50%; left: 50%;
+  width: 0; height: 0;
+  background-color: #000000;
+  border-radius: 50%;
+  z-index: 1000;
+  transform: translate(-50%, -50%);
+  transition: width 0.8s ease-in-out, height 0.8s ease-in-out;
+  pointer-events: none;
+}
+.transition-overlay.active { width: 300vw; height: 300vw; }
