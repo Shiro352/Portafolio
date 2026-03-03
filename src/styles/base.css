@@ -120,3 +120,11 @@ body, html {
   pointer-events: none;
 }
 .transition-overlay.active { width: 300vw; height: 300vw; }
+/* RESPONSIVO PARA MÓVILES (Solo lo necesario) */
+
+@media (max-width: 900px) {
+  .container { flex-direction: column; gap: 2rem; }
+  .card { width: 280px; height: 180px; }
+  .card i { margin-bottom: 1rem; font-size: 3rem; }
+  .sidebar-list { display: none; } /* Ocultamos sidebar en móvil para que no estorbe */
+}
