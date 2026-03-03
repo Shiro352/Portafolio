@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import Home from './pages/home';
 import './styles/base.css'; // Asegúrate de que aquí está todo el CSS que creamos
 import Proyectos from './pages/proyectos';
