@@ -121,6 +121,20 @@ const Carrera = ({ onNavigate }) => {
           <div className="timeline-item left">
             <div className="timeline-dot"></div>
             <div className="glass-card">
+              <span className="date-badge">2024 - Presente</span>
+              <h3 className="timeline-title">Camarero</h3>
+              <h4 className="timeline-subtitle">
+                <i className="fas fa-briefcase"></i>Pastamania</h4>
+              <p className="timeline-text">
+               Camarero en Pastamania, donde he desarrollado habilidades de atención al cliente, trabajo en equipo y gestión del tiempo, contribuyendo a una experiencia positiva para los clientes en un entorno dinámico.
+              </p>
+            </div>
+          </div>
+          
+          {/* ITEM 3: Prácticas */}
+          <div className="timeline-item left">
+            <div className="timeline-dot"></div>
+            <div className="glass-card">
               <span className="date-badge">2023 - 2025</span>
               <h3 className="timeline-title">Coordinador de Zona</h3>
               <h4 className="timeline-subtitle">
@@ -130,6 +144,7 @@ const Carrera = ({ onNavigate }) => {
               </p>
             </div>
           </div>
+          
 
           {/* ITEM 3: Prácticas */}
           <div className="timeline-item right">
