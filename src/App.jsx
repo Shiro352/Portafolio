@@ -3,6 +3,8 @@ import { HashRouter as Router, Routes, Route, useNavigate } from 'react-router-d
 import Home from './pages/home';
 import './styles/base.css'; // Asegúrate de que aquí está todo el CSS que creamos
 import Proyectos from './pages/proyectos';
+import Portfolio from './components/Portfolio';
+import Carrera from './components/carrera'; // Asegúrate de que la ruta es correcta según tu estructura
 // Creamos un componente interno para poder usar useNavigate()
 const AppContent = () => {
     const navigate = useNavigate();
@@ -28,9 +30,9 @@ const AppContent = () => {
                 <Route path="/" element={<Home onNavigate={navigateWithTransition} />} />
                 
                 {/* Pantallas de prueba para que veas que funciona (luego las crearás bien) */}
-                <Route path="/carrera" element={<div className="temp-page"><h1>Carrera</h1><button onClick={() => navigateWithTransition('/')}>Volver</button></div>} />
-                <Route path="/perfil" element={<div className="temp-page"><h1>Perfil</h1><button onClick={() => navigateWithTransition('/')}>Volver</button></div>} />
-                <Route path="/proyectos" element={<Proyectos />} />
+                <Route path="/carrera" element={<Carrera onNavigate={navigateWithTransition} />} />
+                <Route path="/portfolio" element={<Portfolio onNavigate={navigateWithTransition} />} />
+                {/* <Route path="/proyectos" element={<Proyectos />} /> */}
             </Routes>
 
             {/* La bola negra de transición, ¡siempre lista en la capa superior! */}

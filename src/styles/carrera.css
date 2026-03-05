@@ -1,0 +1,211 @@
+/* =========================================
+   CONTENEDOR CON SCROLL INTERNO Y BARRA VISIBLE
+   ========================================= */
+.carrera-container {
+  height: 100vh; /* Ocupa exactamente el alto de la pantalla */
+  width: 100vw;
+  overflow-x: hidden;
+  overflow-y: auto; /* Permite hacer scroll hacia abajo */
+  position: relative;
+  
+  /* Hemos borrado las reglas que ocultaban la barra de scroll 
+     para que el usuario la vea y pueda usarla */
+}
+
+/* Scrollbar con estilo para que encaje con el neón (Opcional pero recomendado) */
+.carrera-container::-webkit-scrollbar {
+  width: 8px;
+}
+.carrera-container::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+.carrera-container::-webkit-scrollbar-thumb {
+  background: rgba(168, 85, 247, 0.5);
+  border-radius: 10px;
+}
+.carrera-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(168, 85, 247, 0.8);
+}
+
+
+
+/* =========================================
+   CONTENEDOR PRINCIPAL Y TÍTULO
+   ========================================= */
+.page-wrapper {
+  position: relative;
+  z-index: 10;
+  padding: 6rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.page-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 4rem;
+  background: linear-gradient(to right, #fff, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  opacity: 0;
+  animation: slideUp 0.6s ease forwards 0.3s;
+}
+
+/* =========================================
+   LÍNEA DE TIEMPO (TIMELINE)
+   ========================================= */
+.timeline {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+}
+
+/* La línea central animada */
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  background: linear-gradient(to bottom, #6366f1, #a855f7);
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
+  
+  /* Animación de dibujo de la línea */
+  height: 0;
+  animation: drawLine 2s cubic-bezier(0.8, 0, 0.2, 1) forwards 0.5s;
+}
+
+.timeline-item {
+  padding: 10px 40px;
+  position: relative;
+  width: 50%;
+  margin-bottom: 2rem;
+}
+
+.timeline-item.left { left: 0; }
+.timeline-item.right { left: 50%; }
+
+/* Los círculos en la línea de tiempo */
+.timeline-dot {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #101014;
+  border: 4px solid #a855f7;
+  border-radius: 50%;
+  top: 20px;
+  z-index: 10;
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.8);
+  opacity: 0;
+  transform: scale(0);
+}
+
+.timeline-item.left .timeline-dot { right: -10px; }
+.timeline-item.right .timeline-dot { left: -10px; }
+
+/* Tarjetas de contenido (Glassmorphism) */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+  opacity: 0;
+}
+
+.timeline-item.left .glass-card { transform: translateX(-50px); }
+.timeline-item.right .glass-card { transform: translateX(50px); }
+
+/* Efecto Hover */
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(168, 85, 247, 0.4);
+  transform: translateY(-5px) !important;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(168, 85, 247, 0.2);
+}
+
+/* Contenido interno de la tarjeta */
+.date-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 12px;
+  background: rgba(168, 85, 247, 0.2);
+  border: 1px solid rgba(168, 85, 247, 0.5);
+  color: #e9d5ff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+
+.timeline-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 0.3rem;
+}
+
+.timeline-subtitle {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #9ca3af;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.timeline-subtitle i { color: #6366f1; }
+.timeline-text { font-size: 0.95rem; color: #d1d5db; line-height: 1.6; }
+
+/* =========================================
+   SECUENCIA DE ANIMACIONES (DELAYS)
+   ========================================= */
+.timeline-item:nth-child(1) .timeline-dot { animation: popIn 0.4s ease forwards 0.8s; }
+.timeline-item:nth-child(1) .glass-card { animation: slideInLeft 0.6s ease forwards 0.9s; }
+
+.timeline-item:nth-child(2) .timeline-dot { animation: popIn 0.4s ease forwards 1.2s; }
+.timeline-item:nth-child(2) .glass-card { animation: slideInRight 0.6s ease forwards 1.3s; }
+
+.timeline-item:nth-child(3) .timeline-dot { animation: popIn 0.4s ease forwards 1.6s; }
+.timeline-item:nth-child(3) .glass-card { animation: slideInLeft 0.6s ease forwards 1.7s; }
+
+.timeline-item:nth-child(4) .timeline-dot { animation: popIn 0.4s ease forwards 2.0s; }
+.timeline-item:nth-child(4) .glass-card { animation: slideInRight 0.6s ease forwards 2.1s; }
+
+.timeline-item:nth-child(5) .timeline-dot { animation: popIn 0.4s ease forwards 2.4s; }
+.timeline-item:nth-child(5) .glass-card { animation: slideInLeft 0.6s ease forwards 2.5s; }
+
+.timeline-item:nth-child(6) .timeline-dot { animation: popIn 0.4s ease forwards 2.6s; }
+.timeline-item:nth-child(6) .glass-card { animation: slideInLeft 0.6s ease forwards 2.9s; }
+
+/* =========================================
+   KEYFRAMES
+   ========================================= */
+@keyframes drawLine { to { height: 100%; } }
+@keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@keyframes popIn { to { opacity: 1; transform: scale(1); } }
+@keyframes slideInLeft { to { opacity: 1; transform: translateX(0); } }
+@keyframes slideInRight { to { opacity: 1; transform: translateX(0); } }
+@keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
+
+/* =========================================
+   RESPONSIVE (MÓVILES)
+   ========================================= */
+@media (max-width: 900px) {
+  .timeline::after { left: 31px; transform: none; }
+  .timeline-item { width: 100%; padding-left: 70px; padding-right: 0; }
+  .timeline-item.left, .timeline-item.right { left: 0; }
+  .timeline-item.left .timeline-dot, .timeline-item.right .timeline-dot { left: 21px; right: auto; }
+  .timeline-item.left .glass-card { transform: translateX(50px); animation-name: slideInRight; }
+}

@@ -31,13 +31,14 @@ export default function Home({ onNavigate }) {
             <Card 
                 icon="fa-user" 
                 title="Perfil" 
-                onClick={() => onNavigate('/perfil')} 
+                onClick={() => onNavigate('/Portfolio')} 
             />
-            <Card 
+            
+            {/*<Card 
                 icon="fa-layer-group" 
                 title="Proyectos" 
                 onClick={() => onNavigate('/proyectos')} 
-            />
+            />*/}
       </div>
     </div>
   );
