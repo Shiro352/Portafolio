@@ -132,7 +132,7 @@ const Carrera = ({ onNavigate }) => {
           </div>
           
           {/* ITEM 3: Prácticas */}
-          <div className="timeline-item left">
+          <div className="timeline-item right">
             <div className="timeline-dot"></div>
             <div className="glass-card">
               <span className="date-badge">2023 - 2025</span>
@@ -147,7 +147,7 @@ const Carrera = ({ onNavigate }) => {
           
 
           {/* ITEM 3: Prácticas */}
-          <div className="timeline-item right">
+          <div className="timeline-item left">
             <div className="timeline-dot"></div>
             <div className="glass-card">
               <span className="date-badge">2024-2025</span>
@@ -161,7 +161,7 @@ const Carrera = ({ onNavigate }) => {
           </div>
 
           {/* ITEM 3: Prácticas */}
-          <div className="timeline-item left">
+          <div className="timeline-item right">
             <div className="timeline-dot"></div>
             <div className="glass-card">
               <span className="date-badge">2025-2025</span>
@@ -175,7 +175,7 @@ const Carrera = ({ onNavigate }) => {
           </div>
 
           {/* ITEM 5: ACTUALIDAD (Con estilos neón verdes inline) */}
-          <div className="timeline-item right">
+          <div className="timeline-item left">
             <div className="timeline-dot"></div>
             <div className="glass-card">
               <span 
